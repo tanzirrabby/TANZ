@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { cursor: none !important; }
+
+.cursor-dot {
+  position: fixed; width: 8px; height: 8px;
+  background: #f97316; border-radius: 50%;
+  pointer-events: none; z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width .3s, height .3s, background .3s;
+}
+.cursor-ring {
+  position: fixed; width: 32px; height: 32px;
+  border: 2px solid rgba(249, 115, 22, 0.3); border-radius: 50%;
+  pointer-events: none; z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: all .15s ease;
+}
+.cursor-hover .cursor-dot { width: 12px; height: 12px; background: #1e3a8a; }
+.cursor-hover .cursor-ring { width: 40px; height: 40px; border-color: #1e3a8a; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes lineUp { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-ring { display: none; }
+  * { cursor: auto !important; }
+}
+
+.btn-primary {
+  @apply bg-[#1e3a8a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-900 transition-all duration-300 shadow-lg hover:shadow-xl;
+}
+.btn-secondary {
+  @apply bg-[#f97316] text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl;
+}
+.card {
+  @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6;
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes lineUp { from { opacity: 0; transform: translateY(100%); } to { opacity: 1; transform: translateY(0); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+.animate-fadeUp { animation: fadeUp .8s forwards; }
+.animate-lineUp { animation: lineUp .9s forwards; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delay { animation: float 6s 3s ease-in-out infinite; }
+.animate-scrollLine { animation: scrollLine 2s ease-in-out infinite; }
+.animate-ticker { animation: ticker 20s linear infinite; }
+.animate-popIn { animation: popIn .5s ease-out; }
